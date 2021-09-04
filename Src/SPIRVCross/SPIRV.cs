@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -85,7 +86,7 @@ namespace SPIRVCross
 
             static string GetNativeAssemblyPath(string osPlatform, string architecture, string libraryName)
             {
-                var assemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                var assemblyLocation = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule?.FileName);
 
                 var paths = new[]
                 {
